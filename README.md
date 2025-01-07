@@ -17,7 +17,7 @@ This is the backend API for the **myFitness** iOS app. The backend is responsibl
 This project uses the following technologies:
 
 - **Spring Boot**: A framework for building Java-based backend applications.
-- **Kotlin**: The programming language used for writing the backend code.
+- **Java**: The programming language used for writing the backend code.
 - **Spring Data JPA**: For interacting with the relational database (MySQL or PostgreSQL).
 - **Spring Security**: For securing the REST API endpoints (planned for future implementation).
 - **H2 Database**: For development (in-memory database).
