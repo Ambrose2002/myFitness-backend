@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.time.LocalDate;
 
 @Entity
 public class User {
@@ -22,7 +23,9 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    private String fullName;
+    private LocalDate dateOfBirth;
+
+    private int currWeight;
 
     // Getters and Setters
 
@@ -42,7 +45,11 @@ public class User {
 
     public void setEmail(String email) {this.email = email;}
 
-    public String getFullName() {return fullName;}
+    public LocalDate getFullName() {return dateOfBirth;}
 
-    public void setFullName(String fullName) {this.fullName = fullName;}
+    public void setFullName(LocalDate dateOfBirth) {this.dateOfBirth = dateOfBirth;}
+
+    public int getCurrWeight() {return currWeight;}
+
+    public void setCurrWeight(int weight) {this.currWeight = weight;}
 }
