@@ -2,6 +2,7 @@ package com.ambrose.myFitness.service;
 
 import com.ambrose.myFitness.model.User;
 import com.ambrose.myFitness.repository.UserRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,11 @@ public class UserService {
     }
 
     public boolean userExists(User user) {
-        return userRepository.findByUsername(user.getUserName()) != null;
+        return userRepository.findByUsername(user.getUsername()) != null;
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
 }

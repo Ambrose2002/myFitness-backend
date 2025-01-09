@@ -23,6 +23,7 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(nullable = true, unique = false)
     private LocalDate dateOfBirth;
 
     private int currWeight;
@@ -33,7 +34,7 @@ public class User {
 
     public void setId(Long id) {this.id = id;}
 
-    public String getUserName() {return username;}
+    public String getUsername() {return username;}
 
     public void setUserName(String username) {this.username = username;}
 
@@ -45,9 +46,9 @@ public class User {
 
     public void setEmail(String email) {this.email = email;}
 
-    public LocalDate getFullName() {return dateOfBirth;}
+    public LocalDate getDateOfBirth() {return dateOfBirth;}
 
-    public void setFullName(LocalDate dateOfBirth) {this.dateOfBirth = dateOfBirth;}
+    public void setDateOfBirth(LocalDate dateOfBirth) {this.dateOfBirth = dateOfBirth;}
 
     public int getCurrWeight() {return currWeight;}
 

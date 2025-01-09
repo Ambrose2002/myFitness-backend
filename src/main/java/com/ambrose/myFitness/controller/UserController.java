@@ -2,6 +2,7 @@ package com.ambrose.myFitness.controller;
 
 import com.ambrose.myFitness.model.User;
 import com.ambrose.myFitness.service.UserService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,5 +34,10 @@ public class UserController {
     @GetMapping("/{email}")
     public User getUserByEmail(@PathVariable String email) {
         return userService.getUserByEmail(email);
+    }
+
+    @GetMapping("/get")
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
     }
 }
