@@ -22,5 +22,9 @@ public class UserService {
     public User createUser(User user) {
         return userRepository.save(user);
     }
-    
+
+    public boolean userExists(User user) {
+        return userRepository.findByUsername(user.getUserName()) != null;
+    }
+
 }
