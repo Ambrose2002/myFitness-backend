@@ -1,11 +1,15 @@
 package com.ambrose.myFitness.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Workout {
@@ -22,6 +26,9 @@ public class Workout {
     @Column
     private String goal;
     private String location;
+
+    @OneToMany(mappedBy = "workout", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Exercise> exercises = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -70,4 +77,20 @@ public class Workout {
     public void setLocation(String location) {
         this.location = location;
     }
+
+    public List<Exercise> getExercises() {
+        return exercises;
+    }
+
+    public void addExercise(Exercise exercise) {
+        exercise.setWorkout(this);
+        this.exercises.add(exercise);
+    }
+
+    public void removeExercise(Exercise exercise) {
+        exercise.setWorkout(null);
+        this.exercises.remove(exercise);
+    }
+
+
 }
