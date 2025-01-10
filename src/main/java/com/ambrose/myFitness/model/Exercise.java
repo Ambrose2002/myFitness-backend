@@ -24,6 +24,9 @@ public class Exercise {
     private int sets;
     private int reps;
 
+
+    // Getters and Setters
+
     public Long getId() {
         return id;
     }
