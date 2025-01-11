@@ -1,2 +1,5 @@
-package com.ambrose.myFitness.controller;public class AuthenticationController {
+package com.ambrose.myFitness.controller;
+
+public class AuthenticationController {
+
 }
