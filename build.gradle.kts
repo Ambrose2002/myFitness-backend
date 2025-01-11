@@ -33,6 +33,7 @@ dependencies {
 	implementation("com.amazonaws:aws-java-sdk-s3:1.12.559")
 	implementation("software.amazon.awssdk:s3:2.17.105")  // AWS SDK for S3
 	implementation("software.amazon.awssdk:auth:2.17.105")
+	implementation("org.springframework.security:spring-security-crypto:6.1.0")
 }
 
 tasks.withType<Test> {
