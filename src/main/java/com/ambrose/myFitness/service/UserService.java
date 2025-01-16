@@ -26,10 +26,10 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
     }
 
-    public User createUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return userRepository.save(user);
-    }
+//    public User createUser(User user) {
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        return userRepository.save(user);
+//    }
 
     public boolean userExists(User user) {
         return userRepository.findByUsername(user.getUsername()).isPresent();

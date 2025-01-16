@@ -1,6 +1,7 @@
 package com.ambrose.myFitness.controller;
 
 import com.ambrose.myFitness.model.User;
+import com.ambrose.myFitness.service.FirebaseAuthService;
 import com.ambrose.myFitness.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,12 +20,29 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/register")
-    public User registerUser(@RequestBody User user) {
-        if (userService.userExists(user)){
-            throw new RuntimeException("User already exists.");
+    @Autowired
+    private FirebaseAuthService firebaseAuthService;
+
+//    @PostMapping("/register")
+//    public User registerUser(@RequestBody User user) {
+//        if (userService.userExists(user)){
+//            throw new RuntimeException("User already exists.");
+//        }
+//        return userService.createUser(user);
+//    }
+
+    @GetMapping("/check-user")
+    public String checkuser(@RequestHeader("Authorization") String authorizationHeader) {
+
+        try {
+            String idToken = authorizationHeader.replace("Bearer ", "");
+
+            String uid = firebaseAuthService.verifyToken(idToken);
+
+            return "User with UID: " + uid + " is authenticated.";
+        } catch (Exception e) {
+            return "Invalid token: " + e.getMessage();
         }
-        return userService.createUser(user);
     }
 
     @GetMapping("/{username}")
