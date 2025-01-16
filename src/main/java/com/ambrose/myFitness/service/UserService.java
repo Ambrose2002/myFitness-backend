@@ -39,4 +39,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public User getUserByUid(String uid) {
+        return userRepository.findByUid(uid)
+                .orElseThrow(() -> new RuntimeException("User not found with uid: " + uid));
+    }
 }

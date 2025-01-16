@@ -39,6 +39,7 @@ public class UserController {
 
             String uid = firebaseAuthService.verifyToken(idToken);
 
+            User user = userService.getUserByUid(uid);
             return "User with UID: " + uid + " is authenticated.";
         } catch (Exception e) {
             return "Invalid token: " + e.getMessage();
